@@ -1,34 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# This is waht I'm trying to do here .. ::
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
+
+_NOTE: Please use Javascript or Typescript with exercises where it makes sense._
+
+You will need a [Infura](https://infura.io) / [Alchemy](https://www.alchemy.com) account to connect to the Ethereum Node.
+   You can use free-tier resources for this test.
+
+## Basic
+
+A) Please make improvements to the code below, using Javascript. If you are making any assumptions about how the code functions please make note of them.
+
+```
+connectToDatabase()
+.then((database)  => {
+    return getUser(database, 'email@email.com')
+    .then(user => {
+        return getUserSettings(database, user.id)
+        .then(settings => {
+            return setRole(database, user.id, "ADMIN")
+            .then(success => {
+                return notifyUser(user.id, "USER_ROLE_UPDATED")
+                .then(success => {
+                    return notifyAdmins("USER_ROLE_UPDATED")
+                })
+            })
+        })
+    })
+})
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Practical
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+_Please use React JS / Next.js for the following task._
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Create a React / Next application that interacts with the the [DAI smart contract](https://etherscan.io/address/0x6b175474e89094c44da98b954eedeac495271d0f) and has the following properties:
+	- List last 100 DAI Transfers and include their etherscan link, timestamp, amount of DAI transferred, sender and recipient,
+	- Update the list every time there is a new event,
+	- Create two inputs. First allows filtering events by sender and the second by recipient. Same rules about first 100 DAI Transfers and updating the list apply.
+	- Make the list sortable by event timestamp and value,
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+2. Use all React JS / Next.js best practices. Use state management library of your choice to store the results.
 
-## Learn More
+3. Use a web3 library such as ethers.js or web3.js to retrieve the results and listen to events.
 
-To learn more about Next.js, take a look at the following resources:
+4. (Bonus):
+    - Use typescript,
+    - Use tailwind for styling,
+    - The app UX should be mobile friendly,
+    - Write a couple of tests,
+    
+5. Write a high-level description (1 page) explaining your solution. Explanation should include: 
+    - A description of what you've built
+    - Which technologies you've used and how they tie together
+    - Your reasons for high-level decisions 
+   
+## What We Review
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Your application will be reviewed by at least two of our engineers. The aspects of your code we will judge include:
+* **Clarity:** Does the README clearly explain the problem and solution?
+* **Correctness:** Does the application do what was asked? If there is anything missing, does the README explain why it is missing?
+* **Code Quality:** Is the code simple, easy to understand, and maintainable?
+* **Testing:** how thorough are the automated tests? Will they be difficult to change if the requirements of the application were to change?
+* **Technical Choices:** Do choices of libraries, databases, architecture seem appropriate for the challenge?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If anything above feels unclear, please use your own judgement to make assumptions. If you have a question about which coding language or framework you should be using on a particular task, please send an email to jasa@fractional.art or klemen@fractional.art to confirm.
 
-## Deploy on Vercel
+Time limit: 7 days.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Send us your answers, as-well as the link to the Github repository back via email.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please also make sure that the repository is private and that you give the following users access 
+- TRCSamurai 
+- jjfractional
+- Cvetlicnifractional
